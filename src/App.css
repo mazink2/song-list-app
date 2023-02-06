@@ -17,3 +17,15 @@ html {
     margin: 0 auto;
     padding: 3rem;
 }
+
+@media (max-width: 1000px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 650px) {
+    html {
+        font-size: 12px;
+    }
+}
