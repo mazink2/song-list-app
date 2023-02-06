@@ -5,6 +5,7 @@ import {
     AiOutlineSortAscending,
     AiOutlineSortDescending,
 } from "react-icons/ai";
+import Spinner from "../../ui/Spinner";
 
 const SongList = () => {
     const [loading, setLoading] = useState(false);
@@ -13,7 +14,9 @@ const SongList = () => {
     return (
         <>
             {loading ? (
-                <div className={styles.spinnerContainer}>loading spinner</div>
+                <div className={styles.spinnerContainer}>
+                    <Spinner />
+                </div>
             ) : (
                 <div className={styles.table}>
                     <div
