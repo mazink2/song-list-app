@@ -36,6 +36,7 @@ const useSongs = () => {
 
         // Fetch songs from the playlist
         const fetchSongs = async () => {
+            setError(null);
             setStatus("FETCHING");
 
             // Get access token

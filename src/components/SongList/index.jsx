@@ -104,10 +104,18 @@ const SongList = () => {
                                     }
                                 })}
 
-                                {/* Display message when no results are found */}
+                                {/* Display message when no results are found or when there is a fetch error */}
                                 {!filteredSongs.length ? (
                                     <div className={`${styles.noResults}`}>
-                                        <p>No results found</p>
+                                        {error ? (
+                                            <p>
+                                                There was an error getting the
+                                                song list. Please try refreshing
+                                                the page.
+                                            </p>
+                                        ) : (
+                                            <p>No results found</p>
+                                        )}
                                     </div>
                                 ) : (
                                     ""
