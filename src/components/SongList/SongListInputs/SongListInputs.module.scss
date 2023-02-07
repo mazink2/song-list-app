@@ -23,6 +23,10 @@
         &::placeholder {
             color: #c3bcd6;
         }
+
+        &:focus {
+            border: 1px solid variables.$lime;
+        }
     }
     select {
         width: 200px;
