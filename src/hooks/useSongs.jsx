@@ -10,7 +10,8 @@ const url =
     "https://api.spotify.com/v1/playlists/4MpGtMsjMWNoJCN9fCgx6m/tracks";
 
 const useSongs = () => {
-    const [songs, setData] = useState([]);
+    const [songs, setSongs] = useState([]);
+    const [status, setStatus] = useState("IDLE");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -35,6 +36,9 @@ const useSongs = () => {
 
         // Fetch songs from the playlist
         const fetchSongs = async () => {
+            setError(null);
+            setStatus("FETCHING");
+
             // Get access token
             const token = await getToken();
 
@@ -48,11 +52,12 @@ const useSongs = () => {
                 });
                 const data = await response.json();
 
-                setData(data.items);
+                setSongs(data.items);
             } catch (err) {
                 setError(err);
             } finally {
                 setLoading(false);
+                setStatus("DONE");
             }
         };
 
@@ -62,6 +67,7 @@ const useSongs = () => {
     return {
         songs,
         error,
+        status,
         loading,
         setLoading,
     };
