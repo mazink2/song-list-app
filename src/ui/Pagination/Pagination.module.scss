@@ -1,0 +1,57 @@
+/*
+  Pagination UI component styles
+*/
+
+.paginationList {
+    display: flex;
+    margin: 0 auto;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.paginationButton {
+    border-radius: 4px;
+    min-width: 34px;
+    border: 1px solid #545252;
+    padding: 13px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    transition: 0.2s ease;
+
+    &.isSelected,
+    &:hover {
+        background: #222326;
+        color: #fff;
+    }
+}
+
+.paginationButtonText {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+
+    &.isDisabled {
+        cursor: not-allowed;
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+@media (max-width: 700px) {
+    .paginationList {
+        gap: 6px;
+    }
+    .paginationButton {
+        padding: 8px;
+    }
+}
