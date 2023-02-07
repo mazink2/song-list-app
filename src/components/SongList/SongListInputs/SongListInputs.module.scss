@@ -2,10 +2,12 @@
   Search and select input box styles
 */
 
+@use "/src/styles/variables";
+
 .inputsContainer {
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: variables.$maxContentWidth;
     margin: 0 auto 20px;
     input,
     select {
@@ -13,8 +15,7 @@
         padding: 0.75rem 1rem;
         border: 1px solid #ebe5ff;
         border-radius: 5px;
-        background: #fff;
-        background: #222326;
+        background: variables.$lightBg;
         color: #fff;
         font-size: 1.1rem;
 
@@ -28,7 +29,7 @@
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: variables.$screen-md) {
     .inputsContainer {
         flex-direction: column-reverse;
         margin-bottom: 25px;

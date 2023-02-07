@@ -2,6 +2,8 @@
   Pagination UI component styles
 */
 
+@use "/src/styles/variables";
+
 .paginationList {
     display: flex;
     margin: 0 auto;
@@ -31,7 +33,7 @@
 
     &.isSelected,
     &:hover {
-        background: #222326;
+        background: variables.$lightBg;
         color: #fff;
     }
 }
@@ -51,7 +53,7 @@
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: variables.$screen-md) {
     .paginationList {
         gap: 6px;
     }

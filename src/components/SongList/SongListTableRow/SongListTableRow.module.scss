@@ -1,10 +1,12 @@
 /*
   Table Row Styles
 */
+@use "/src/styles/variables";
+
 .tableRow {
     display: flex;
     justify-content: space-between;
-    background: #222326;
+    background: variables.$lightBg;
     font-size: 1rem;
     border-bottom: 1px solid #545252;
 
@@ -107,7 +109,7 @@
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: variables.$screen-md) {
     .tableRow {
         .tableCell {
             padding: 2px 4px;

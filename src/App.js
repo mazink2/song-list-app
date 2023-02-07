@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import Header from "./components/Header";
 import IntroMessage from "./components/IntroMessage";
 import SongList from "./components/SongList";

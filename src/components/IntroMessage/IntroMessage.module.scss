@@ -2,10 +2,12 @@
   Intro message styles
 */
 
+@use "/src/styles/variables";
+
 .introMessageContainer {
     font-size: 1.5rem;
     line-height: 2.2rem;
-    max-width: 1200px;
+    max-width: variables.$maxContentWidth;
     margin: 0 auto 40px;
     letter-spacing: 0.5px;
 
@@ -23,7 +25,7 @@
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: variables.$screen-md) {
     .introMessageContainer {
         margin: 0 auto 20px;
     }
