@@ -64,6 +64,7 @@ const SongList = () => {
                   <img
                     src={album.images[1].url}
                     alt={album.name}
+                    title={`Album - ${album.name}`}
                   />
                 </div>
                 <div className={`${styles.tableCell} ${styles.song}`}>
