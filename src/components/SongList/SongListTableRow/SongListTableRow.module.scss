@@ -45,6 +45,7 @@
                 display: flex;
                 align-items: center;
                 margin-left: 5px;
+                cursor: pointer;
             }
         }
         &.artist {
@@ -72,10 +73,11 @@
 .tableHeadersContainer {
     font-size: 1.1rem;
     cursor: initial;
-    padding: .5rem 0;
+    line-height: 3.5rem;
 
     .tableCell {
         font-weight: 700;
+        border-radius: 2px;
 
         &.song {
             cursor: pointer;
