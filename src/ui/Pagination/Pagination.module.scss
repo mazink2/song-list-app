@@ -32,9 +32,13 @@
     transition: 0.2s ease;
 
     &.isSelected,
-    &:hover {
+    &:hover,
+    &:focus {
         background: variables.$lightBg;
         color: #fff;
+    }
+    &:focus {
+        text-decoration: underline;
     }
 }
 
@@ -50,6 +54,11 @@
     &.isDisabled {
         cursor: not-allowed;
         color: rgba(255, 255, 255, 0.3);
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
     }
 }
 
