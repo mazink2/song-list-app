@@ -2,6 +2,8 @@
   Header Styles
 */
 
+@use '/src/styles/variables';
+
 .header {
     width: 100%;
     position: fixed;
@@ -13,7 +15,7 @@
 
     &Content {
         position: relative;
-        max-width: 1200px;
+        max-width: variables.$maxContentWidth;
         margin: 0 auto;
         font-size: 2.5rem;
     }
@@ -25,7 +27,7 @@
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: variables.$screen-md) {
     .header {
         &Content {
             text-align: center;
