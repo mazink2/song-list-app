@@ -16,6 +16,7 @@ html {
 .App {
     margin: 0 auto;
     padding: 3rem;
+    margin-top: 4rem;
 }
 
 @media (max-width: 1000px) {
@@ -27,5 +28,9 @@ html {
 @media (max-width: 650px) {
     html {
         font-size: 12px;
+    }
+
+    .App {
+        margin-top: 3rem;
     }
 }
