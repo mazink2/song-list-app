@@ -54,8 +54,7 @@ const Pagination = ({
                 lastEnabled && setCurrentPage(totalPages);
                 break;
             default:
-              console.error("unknown pagination operation type")
-              
+                console.error("unknown pagination operation type");
         }
 
         scroll();
@@ -92,21 +91,19 @@ const Pagination = ({
                     scroll();
                 };
                 const isSelected = index + 1 === currentPage;
+                const showButton =
+                    index > currentPage - 4 && index < currentPage + 2;
 
-                return (
-                    <>
-                        {index > currentPage - 4 && index < currentPage + 2 ? (
-                            <PaginationButton
-                                onClick={onClick}
-                                isSelected={isSelected}
-                                page={index + 1}
-                                key={Math.random()}
-                            />
-                        ) : (
-                            ""
-                        )}
-                    </>
-                );
+                if (showButton) {
+                    return (
+                        <PaginationButton
+                            onClick={onClick}
+                            isSelected={isSelected}
+                            page={index + 1}
+                            key={index + 1}
+                        />
+                    );
+                }
             })}
 
             {/* Next and last page buttons */}

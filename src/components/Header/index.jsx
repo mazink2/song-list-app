@@ -24,7 +24,7 @@ const Header = () => {
             id="header"
         >
             <div className={styles.headerContent}>
-                <a href="/" class={styles.logo}>
+                <a href="/" className={styles.logo}>
                     Demo
                 </a>
             </div>

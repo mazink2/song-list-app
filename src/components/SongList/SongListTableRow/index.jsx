@@ -96,7 +96,7 @@ const SongListTableRow = ({
                         <span>
                             {artists.map((artist, i) => {
                                 return (
-                                    <>
+                                    <span key={i}>
                                         {i > 0 ? <>,&nbsp;</> : ""}
                                         <a
                                             href={artist.external_urls.spotify}
@@ -105,7 +105,7 @@ const SongListTableRow = ({
                                         >
                                             {artist.name}
                                         </a>
-                                    </>
+                                    </span>
                                 );
                             })}
                         </span>

@@ -117,8 +117,6 @@ const SongList = () => {
                                                 key={index}
                                             />
                                         );
-                                    } else {
-                                      return <></>
                                     }
                                 })}
 
