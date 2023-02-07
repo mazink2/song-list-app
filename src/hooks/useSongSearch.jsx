@@ -66,6 +66,7 @@ const useSearch = (songs = [], searchQuery = "", setCurrentPage) => {
     // Return search results
     return {
         filteredSongs,
+        setFilteredSongs,
     };
 };
 
