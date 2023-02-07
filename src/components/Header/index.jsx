@@ -23,7 +23,7 @@ const Header = () => {
             className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}
             id="header"
         >
-            <div className={`${styles.headerContent} container`}>
+            <div className={styles.headerContent}>
                 <a href="/" class={styles.logo}>
                     Demo
                 </a>
