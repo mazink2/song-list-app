@@ -3,7 +3,7 @@
     Component that renders a list of songs in a table
 */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./SongList.module.scss";
 
 import Spinner from "../../ui/Spinner";
@@ -15,6 +15,9 @@ import usePagination from "../../hooks/usePagination";
 import SongListInputs from "./SongListInputs";
 
 const SongList = () => {
+    // Ref for smooth scroll location
+    const tableRef = useRef(null);
+
     // Get songs data
     const { songs, error, status, loading, setLoading } = useSongs();
 
@@ -91,7 +94,7 @@ const SongList = () => {
                                 ""
                             )}
 
-                            <div className={styles.table}>
+                            <div className={styles.table} ref={tableRef}>
                                 {/* Header row */}
                                 <SongListTableRow
                                     rowType={"header"}
@@ -140,6 +143,7 @@ const SongList = () => {
                                     currentPage={currentPage}
                                     totalPages={totalPages}
                                     setCurrentPage={setCurrentPage}
+                                    scrollToRef={tableRef}
                                 />
                             ) : (
                                 ""

@@ -7,34 +7,55 @@
     - totalPages - total number of pages
     - setCurrentPage - state setter for setting currentPage value
     - type - if set to "above", it will have less margin below it
+    - scrollToRef - if this ref is provided, all click handlers will trigger a
+    smooth scroll to the top of the provided ref when updating the current page
 */
 import styles from "./Pagination.module.scss";
 
-const Pagination = ({ currentPage, totalPages, setCurrentPage, type }) => {
+const Pagination = ({
+    currentPage,
+    totalPages,
+    setCurrentPage,
+    type,
+    scrollToRef,
+}) => {
     // Variables to check which pagination buttons to show
     const nextEnabled = totalPages > 1 && currentPage !== totalPages;
     const previousEnabled = currentPage > 1;
     const firstEnabled = currentPage > 3;
     const lastEnabled = currentPage < totalPages - 2;
 
-    // Go to first page
-    const onFirstClick = () => {
-        firstEnabled && setCurrentPage(1);
+    const scroll = () => {
+        // Scroll to ref if provided
+        if (scrollToRef) {
+            window.scrollTo({
+                top: scrollToRef.current.offsetTop - 120,
+                behavior: "smooth",
+            });
+        }
     };
 
-    // Go to next page
-    const onNextClick = () => {
-        nextEnabled && setCurrentPage(currentPage + 1);
-    };
+    const handleClick = (type) => {
+        switch (type) {
+            case "first":
+                // Go to first page
+                firstEnabled && setCurrentPage(1);
+                break;
+            case "prev":
+                // Go to previous page
+                previousEnabled && setCurrentPage(currentPage - 1);
+                break;
+            case "next":
+                // Go to next page
+                nextEnabled && setCurrentPage(currentPage + 1);
+                break;
+            case "last":
+                // Go to last page
+                lastEnabled && setCurrentPage(totalPages);
+                break;
+        }
 
-    // Go to previous page
-    const onPreviousClick = () => {
-        previousEnabled && setCurrentPage(currentPage - 1);
-    };
-
-    // Go to last page
-    const onLastClick = () => {
-        lastEnabled && setCurrentPage(totalPages);
+        scroll();
     };
 
     return (
@@ -43,12 +64,13 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage, type }) => {
                 type === "above" ? styles.above : ""
             }`}
         >
+            {/* <div style={{background: 'blue', position: 'fixed', height: '237px', top: '0'}}>sss</div> */}
             {/* First and previous page buttons */}
             <button
                 className={`${styles.paginationButtonText} ${
                     !firstEnabled ? styles.isDisabled : ""
                 }`}
-                onClick={onFirstClick}
+                onClick={() => handleClick("first")}
             >
                 {"<< First"}
             </button>
@@ -56,14 +78,17 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage, type }) => {
                 className={`${styles.paginationButtonText} ${
                     !previousEnabled ? styles.isDisabled : ""
                 }`}
-                onClick={onPreviousClick}
+                onClick={() => handleClick("prev")}
             >
                 {"< Prev"}
             </button>
 
             {/* Pagination number buttons */}
             {[...new Array(totalPages)].map((_, index) => {
-                const onClick = () => setCurrentPage(index + 1);
+                const onClick = () => {
+                    setCurrentPage(index + 1);
+                    scroll();
+                };
                 const isSelected = index + 1 === currentPage;
 
                 return (
@@ -87,7 +112,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage, type }) => {
                 className={`${styles.paginationButtonText} ${
                     !nextEnabled ? styles.isDisabled : ""
                 }`}
-                onClick={onNextClick}
+                onClick={() => handleClick("next")}
             >
                 {"Next >"}
             </button>
@@ -95,7 +120,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage, type }) => {
                 className={`${styles.paginationButtonText} ${
                     !lastEnabled ? styles.isDisabled : ""
                 }`}
-                onClick={onLastClick}
+                onClick={() => handleClick("last")}
             >
                 {"Last >>"}
             </button>
