@@ -34,3 +34,9 @@ html {
         margin-top: 3rem;
     }
 }
+
+@media (max-width: 450px) {
+    .App {
+        padding: 3rem 2rem;
+    }
+}

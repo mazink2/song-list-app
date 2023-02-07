@@ -79,6 +79,18 @@ const SongList = () => {
                                 setSearchQuery={setSearchQuery}
                             />
 
+                            {/* Pagination buttons */}
+                            {filteredSongs.length ? (
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    setCurrentPage={setCurrentPage}
+                                    type="above"
+                                />
+                            ) : (
+                                ""
+                            )}
+
                             <div className={styles.table}>
                                 {/* Header row */}
                                 <SongListTableRow
