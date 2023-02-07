@@ -71,7 +71,11 @@ const SongListTableRow = ({
                     className={`${styles.tableRow} ${styles.tableDataContainer}`}
                 >
                     <div className={`${styles.tableCell} ${styles.album}`}>
-                        <a href={album.external_urls.spotify} target="_blank">
+                        <a
+                            href={album.external_urls.spotify}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             <img
                                 src={album.images[1].url}
                                 alt={album.name}
@@ -80,7 +84,11 @@ const SongListTableRow = ({
                         </a>
                     </div>
                     <div className={`${styles.tableCell} ${styles.song}`}>
-                        <a href={songUrl.spotify} target="_blank">
+                        <a
+                            href={songUrl.spotify}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             {name}
                         </a>
                     </div>
@@ -93,6 +101,7 @@ const SongListTableRow = ({
                                         <a
                                             href={artist.external_urls.spotify}
                                             target="_blank"
+                                            rel="noreferrer"
                                         >
                                             {artist.name}
                                         </a>
