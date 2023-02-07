@@ -30,7 +30,7 @@ const SongList = () => {
         setItemsPerPage: setSongsPerPage,
     } = usePagination(songs);
 
-    const [sortType, setSortType] = useState("asc");
+    const [sortType, setSortType] = useState("");
 
     // Get search results from useSongSearch hook
     const [searchQuery, setSearchQuery] = useState("");
@@ -38,6 +38,7 @@ const SongList = () => {
         songs,
         searchQuery,
         setCurrentPage,
+        sortType,
     );
 
     // Sort song names in alphabetical order
@@ -50,12 +51,12 @@ const SongList = () => {
         // If sorted in ascending alphabetical order, sort in descending order
         if (type === "" || type === "desc") {
             sorted = filteredSongs.sort((a, b) =>
-                b.track.name.localeCompare(a.track.name),
+                a.track.name.localeCompare(b.track.name),
             );
             setSortType("asc");
         } else {
             sorted = filteredSongs.sort((a, b) =>
-                a.track.name.localeCompare(b.track.name),
+                b.track.name.localeCompare(a.track.name),
             );
             setSortType("desc");
         }

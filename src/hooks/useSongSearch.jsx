@@ -10,7 +10,12 @@
 
 import { useState, useEffect } from "react";
 
-const useSearch = (songs = [], searchQuery = "", setCurrentPage) => {
+const useSongSearch = (
+    songs = [],
+    searchQuery = "",
+    setCurrentPage,
+    sortType,
+) => {
     const [filteredSongs, setFilteredSongs] = useState([]);
 
     // Method to search for songs in provided data array that match
@@ -48,6 +53,18 @@ const useSearch = (songs = [], searchQuery = "", setCurrentPage) => {
             filtered = songs;
         }
 
+        // Sort results by name if they were sorted before the search
+        if (sortType === "asc") {
+            filtered = filtered.sort((a, b) =>
+                a.track.name.localeCompare(b.track.name),
+            );
+        }
+        if (sortType === "desc") {
+            filtered = filtered.sort((a, b) =>
+                b.track.name.localeCompare(a.track.name),
+            );
+        }
+
         // Reset current page to one and display results
         setCurrentPage(1);
         setFilteredSongs(filtered);
@@ -70,4 +87,4 @@ const useSearch = (songs = [], searchQuery = "", setCurrentPage) => {
     };
 };
 
-export default useSearch;
+export default useSongSearch;

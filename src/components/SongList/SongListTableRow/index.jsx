@@ -39,11 +39,11 @@ const SongListTableRow = ({
                         Song
                         {sortType === "asc" ? (
                             <button className={styles.sortButton}>
-                                <AiOutlineSortDescending />
+                                <AiOutlineSortAscending />
                             </button>
                         ) : (
                             <button className={styles.sortButton}>
-                                <AiOutlineSortAscending />
+                                <AiOutlineSortDescending />
                             </button>
                         )}
                     </div>
