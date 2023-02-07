@@ -59,7 +59,12 @@ const useSongs = () => {
         fetchSongs();
     }, []);
 
-    return { songs, error, loading };
+    return {
+        songs,
+        error,
+        loading,
+        setLoading,
+    };
 };
 
 export default useSongs;

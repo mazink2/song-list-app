@@ -16,7 +16,7 @@ import SongListInputs from "./SongListInputs";
 
 const SongList = () => {
     // Get songs data
-    const { songs, error, loading } = useSongs();
+    const { songs, error, loading, setLoading } = useSongs();
 
     // Get pagination variables from usePagination hook
     const {
@@ -29,13 +29,37 @@ const SongList = () => {
 
     const [sortType, setSortType] = useState("asc");
 
-    const handleSort = () => {
-        // TODO - sort song names in alphabetical order
-    };
-
     // Get search results from useSongSearch hook
     const [searchQuery, setSearchQuery] = useState("");
-    const { filteredSongs } = useSongSearch(songs, searchQuery, setCurrentPage);
+    const { filteredSongs, setFilteredSongs } = useSongSearch(
+        songs,
+        searchQuery,
+        setCurrentPage,
+    );
+
+    // Sort song names in alphabetical order
+    const handleSort = ({ manualSortType = "" }) => {
+        let type = manualSortType ? manualSortType : sortType;
+
+        setLoading(true);
+        let sorted;
+        // If not sorted or sorted in descending alphabetical order, sort in ascending order
+        // If sorted in ascending alphabetical order, sort in descending order
+        if (type === "" || type === "desc") {
+            sorted = filteredSongs.sort((a, b) =>
+                b.track.name.localeCompare(a.track.name),
+            );
+            setSortType("asc");
+        } else {
+            sorted = filteredSongs.sort((a, b) =>
+                a.track.name.localeCompare(b.track.name),
+            );
+            setSortType("desc");
+        }
+
+        setFilteredSongs(sorted);
+        setLoading(false);
+    };
 
     return (
         <>
