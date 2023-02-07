@@ -64,7 +64,6 @@ const Pagination = ({
                 type === "above" ? styles.above : ""
             }`}
         >
-            {/* <div style={{background: 'blue', position: 'fixed', height: '237px', top: '0'}}>sss</div> */}
             {/* First and previous page buttons */}
             <button
                 className={`${styles.paginationButtonText} ${
