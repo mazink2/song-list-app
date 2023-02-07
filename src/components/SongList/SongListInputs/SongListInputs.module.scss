@@ -1,0 +1,43 @@
+/*
+  Search and select input box styles
+*/
+
+.inputsContainer {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    input,
+    select {
+        width: 40%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #ebe5ff;
+        border-radius: 5px;
+        background: #fff;
+        background: #222326;
+        color: #fff;
+        font-size: 1.1rem;
+
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px;
+        &::placeholder {
+            color: #c3bcd6;
+        }
+    }
+    select {
+        width: 200px;
+    }
+}
+
+@media (max-width: 650px) {
+    .inputsContainer {
+        flex-direction: column-reverse;
+        margin-bottom: 25px;
+
+        input,
+        select {
+            width: 100%;
+            margin-top: 15px;
+            font-size: 1.3rem;
+        }
+    }
+}

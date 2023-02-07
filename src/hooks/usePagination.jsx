@@ -1,6 +1,6 @@
 /*
     usePagination:
-    Hook that provides pagination values to be used alongside the Pagination UI component
+    Custom hook that provides pagination values to be used alongside the Pagination UI component
 
     Parameters:
     - data - Array of objects with data to be rendered
