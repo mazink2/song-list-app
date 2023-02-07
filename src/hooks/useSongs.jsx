@@ -11,6 +11,7 @@ const url =
 
 const useSongs = () => {
     const [songs, setSongs] = useState([]);
+    const [status, setStatus] = useState("IDLE");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -35,6 +36,8 @@ const useSongs = () => {
 
         // Fetch songs from the playlist
         const fetchSongs = async () => {
+            setStatus("FETCHING");
+
             // Get access token
             const token = await getToken();
 
@@ -53,6 +56,7 @@ const useSongs = () => {
                 setError(err);
             } finally {
                 setLoading(false);
+                setStatus("DONE");
             }
         };
 
@@ -62,6 +66,7 @@ const useSongs = () => {
     return {
         songs,
         error,
+        status,
         loading,
         setLoading,
     };
