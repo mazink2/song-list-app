@@ -8,7 +8,7 @@
     - setCurrentPage - State setter function to reset page to 1 after performing search 
 */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const useSongSearch = (
     songs = [],
@@ -20,7 +20,7 @@ const useSongSearch = (
 
     // Method to search for songs in provided data array that match
     // the album, song name, or artist names
-    const handleSearch = () => {
+    const handleSearch = useCallback(() => {
         let filtered;
 
         // Search the results
@@ -68,12 +68,12 @@ const useSongSearch = (
         // Reset current page to one and display results
         setCurrentPage(1);
         setFilteredSongs(filtered);
-    };
+    }, [searchQuery, setCurrentPage, songs, sortType]);
 
     // Run search when searchQuery is updated
     useEffect(() => {
         handleSearch();
-    }, [searchQuery]);
+    }, [searchQuery, handleSearch]);
 
     // Initialize song results when page loads
     useEffect(() => {

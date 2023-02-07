@@ -53,6 +53,9 @@ const Pagination = ({
                 // Go to last page
                 lastEnabled && setCurrentPage(totalPages);
                 break;
+            default:
+              console.error("unknown pagination operation type")
+              
         }
 
         scroll();

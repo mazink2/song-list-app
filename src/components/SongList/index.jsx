@@ -3,7 +3,7 @@
     Component that renders a list of songs in a table
 */
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import styles from "./SongList.module.scss";
 
 import Spinner from "../../ui/Spinner";
@@ -117,6 +117,8 @@ const SongList = () => {
                                                 key={index}
                                             />
                                         );
+                                    } else {
+                                      return <></>
                                     }
                                 })}
 
