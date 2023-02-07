@@ -10,7 +10,7 @@ const url =
     "https://api.spotify.com/v1/playlists/4MpGtMsjMWNoJCN9fCgx6m/tracks";
 
 const useSongs = () => {
-    const [songs, setData] = useState([]);
+    const [songs, setSongs] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -48,7 +48,7 @@ const useSongs = () => {
                 });
                 const data = await response.json();
 
-                setData(data.items);
+                setSongs(data.items);
             } catch (err) {
                 setError(err);
             } finally {
