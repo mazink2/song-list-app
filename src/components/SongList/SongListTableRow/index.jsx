@@ -56,7 +56,13 @@ const SongListTableRow = ({
                 </div>
             );
         } else if (rowType === "data" && data) {
-            const { name, artists, album, duration_ms } = data.track;
+            const {
+                name,
+                artists,
+                album,
+                duration_ms,
+                external_urls: songUrl,
+            } = data.track;
 
             const durationInSeconds = (duration_ms / 1000).toFixed();
 
@@ -65,19 +71,35 @@ const SongListTableRow = ({
                     className={`${styles.tableRow} ${styles.tableDataContainer}`}
                 >
                     <div className={`${styles.tableCell} ${styles.album}`}>
-                        <img
-                            src={album.images[1].url}
-                            alt={album.name}
-                            title={`Album - ${album.name}`}
-                        />
+                        <a href={album.external_urls.spotify} target="_blank">
+                            <img
+                                src={album.images[1].url}
+                                alt={album.name}
+                                title={`Album - ${album.name}`}
+                            />
+                        </a>
                     </div>
                     <div className={`${styles.tableCell} ${styles.song}`}>
-                        {name}
+                        <a href={songUrl.spotify} target="_blank">
+                            {name}
+                        </a>
                     </div>
                     <div className={`${styles.tableCell} ${styles.artist}`}>
-                        {artists.map(
-                            (artist, i) => `${i > 0 ? ", " : ""}${artist.name}`,
-                        )}
+                        <span>
+                            {artists.map((artist, i) => {
+                                return (
+                                    <>
+                                        {i > 0 ? <>,&nbsp;</> : ""}
+                                        <a
+                                            href={artist.external_urls.spotify}
+                                            target="_blank"
+                                        >
+                                            {artist.name}
+                                        </a>
+                                    </>
+                                );
+                            })}
+                        </span>
                     </div>
                     <div className={`${styles.tableCell} ${styles.duration}`}>
                         {Math.floor(durationInSeconds / 60)}:
