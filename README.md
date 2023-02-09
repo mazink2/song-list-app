@@ -1,3 +1,5 @@
+## View the app here: https://upbeat-jelly.surge.sh/
+
 # To run the app
 
 Update the .env file with your Spotify for Developers credentials. You can make an account here: https://developer.spotify.com/
